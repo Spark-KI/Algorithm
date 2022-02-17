@@ -6,10 +6,16 @@ class BinarySearch():
         self.right = 0
         self.mid = 0
 
-    def funcition1(self):
+    # replace: def function1(self) -> int:
+    def function1(self):
         self.right = len(self.nums) - 1
         while self.left <= self.right:
+            # replace: self.mid = (self.left + self.right)//2
+            # prevent overflow, replace: self.mid = self.left + (self.right - self.left) // 2
+            # bit operation, with higher efficiency
+            # # replace: self.mid = (self.left + self.right) >> 1
             self.mid = int((self.left + self.right) / 2)
+
             if self.nums[self.mid] == self.target:
                 return self.mid
             if self.nums[self.mid] > self.target:
@@ -18,10 +24,11 @@ class BinarySearch():
                 self.left = self.mid + 1
         return -1
 
-    def funcition2(self):
+    # replace: def function2(self) -> int:
+    def function2(self):
         self.right = len(nums)
         while self.left < self.right:
-            self.mid = int((self.left + self.right) / 2)
+            self.mid = self.left + ((self.right - self.left) >> 1)  # the best way
             if self.nums[self.mid] == self.target:
                 return self.mid
             if self.nums[self.mid] > self.target:
@@ -32,6 +39,6 @@ class BinarySearch():
 
 
 nums = [1, 2, 3, 4, 5, 6]
-target = 6
+target = 1
 search = BinarySearch(nums, target)
-print(search.funcition2())
+print(search.function2())
