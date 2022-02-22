@@ -1,3 +1,5 @@
+
+
 class BinarySearch():
     def __init__(self, nums, target):
         self.nums = nums
